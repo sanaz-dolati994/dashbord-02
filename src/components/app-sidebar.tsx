@@ -21,12 +21,12 @@ export function AppSidebar() {
   const [activeTab, setActiveTab] = useState(navItems[0].title);
 
   return (
-    <div className="flex flex-col w-full">
-      {/* نوار کناری در سمت راست */}
+    <div className="flex flex-col w-full ">
       <Sidebar side="right">
         <SidebarContent>
           <SidebarGroup>
             <SidebarGroupLabel>
+              <p>داشبورد</p>
               <p>داشبورد</p>
               <LucideLayoutDashboard />
             </SidebarGroupLabel>
@@ -53,7 +53,6 @@ export function AppSidebar() {
         </SidebarContent>
       </Sidebar>
 
-      {/* محتوای تب‌ها در سمت چپ یا مرکز */}
       <div className="flex-1 p-4">
         <Tabs value={activeTab} className="w-full">
           {navItems.map((item) => (
