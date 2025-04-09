@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "style": "default",
   "tailwind": {
     "config": "tailwind.config.js",
@@ -11,3 +12,25 @@
     "utils": "./src/lib/utils"
   }
 }
+=======
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "default",
+  "rsc": false,
+  "tsx": true,
+  "tailwind": {
+    "config": "tailwind.config.js",
+    "css": "src/index.css",
+    "baseColor": "neutral",
+    "cssVariables": true,
+    "prefix": ""
+  },
+  "aliases": {
+    "components": "@/components",
+    "utils": "@/lib/utils",
+    "ui": "@/components/ui",
+    "lib": "@/lib",
+    "hooks": "@/hooks"
+  },
+  "iconLibrary": "lucide"
+}
+>>>>>>> d5bd12bb257d86d0ae3873fad60c9116420261fc
