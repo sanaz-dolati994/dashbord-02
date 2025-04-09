@@ -8,8 +8,6 @@ function App() {
       <div className="flex h-full flex-row-reverse">
         <main style={{ flex: 1, padding: "20px" }}>
           <SidebarTrigger />
-          <h1>محتوای اصلی</h1>
-          <p>اینجا محتوای صفحه‌تون می‌ره.</p>
         </main>
 
         <AppSidebar />

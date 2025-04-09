@@ -1,4 +1,3 @@
-// AppSidebar Component
 import { useState } from "react";
 import React from "react";
 import { LucideLayoutDashboard } from "lucide-react";
@@ -7,32 +6,56 @@ import {
   SidebarContent,
   SidebarGroup,
   SidebarGroupContent,
-  SidebarGroupLabel,
 } from "./ui/sidebar";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
+import { FaUserFriends } from "react-icons/fa";
+import { BiSolidWallet } from "react-icons/bi";
+import { TbCategory } from "react-icons/tb";
 
+// آیتم‌ها با آیکون
 const navItems = [
-  { title: "مدیریت کاربران", content: <p>بخش مدیریت کاربران</p> },
-  { title: "مدیریت مالی", content: <p>بخش مدیریت مالی</p> }, // اصلاح typo: contet به content
-  { title: "دسته بندی ها", content: <p>بخش دسته بندی</p> }, // اصلاح typo: بحش به بخش
+  {
+    title: "مدیریت کاربران",
+    icon: <FaUserFriends className="text-lg ml-2" />,
+    content: <p>بخش مدیریت کاربران</p>,
+  },
+  {
+    title: "مدیریت مالی",
+    icon: <BiSolidWallet className="text-lg ml-2" />,
+    content: <p>بخش مدیریت مالی</p>,
+  },
+  {
+    title: "دسته بندی ها",
+    icon: <TbCategory className="text-lg ml-2" />,
+    content: <p>بخش دسته بندی</p>,
+  },
 ];
 
 export function AppSidebar() {
   const [activeTab, setActiveTab] = useState(navItems[0].title);
+  const [isMenuOpen, setIsMenuOpen] = useState(true);
 
   return (
-    <div className="flex flex-col w-full ">
+    <div className="flex flex-col w-full">
       <Sidebar side="right">
         <SidebarContent>
           <SidebarGroup>
-            <SidebarGroupLabel>
-              <p>داشبورد</p>
-              <h1>سلام خوش آمدید</h1>
-              <h2>خروج</h2>
+            {/* دکمه داشبورد (خارج از Label گذاشته شده برای جلوگیری از هم‌پوشانی) */}
+            <div className="px-4 pt-2">
+              <button
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="flex items-center gap-2 pl-8 py-2  rounded-md w-full text-right "
+              >
+                <LucideLayoutDashboard className="" />
+                <span>داشبورد</span>
+              </button>
+            </div>
 
-              <LucideLayoutDashboard />
-            </SidebarGroupLabel>
-            <SidebarGroupContent>
+            <SidebarGroupContent
+              className={`transition-all duration-200 ${
+                isMenuOpen ? "mt-10" : "hidden"
+              }`}
+            >
               <Tabs
                 value={activeTab}
                 onValueChange={setActiveTab}
@@ -43,9 +66,10 @@ export function AppSidebar() {
                     <TabsTrigger
                       key={item.title}
                       value={item.title}
-                      className="w-full text-right py-2 px-4 rounded-md data-[state=active]:bg-gray-200"
+                      className="w-full text-right py-2 px-4 rounded-md data-[state=active]:bg-gray-200 flex items-center justify-end"
                     >
-                      {item.title}
+                      <span>{item.title}</span>
+                      {item.icon}
                     </TabsTrigger>
                   ))}
                 </TabsList>
@@ -55,7 +79,7 @@ export function AppSidebar() {
         </SidebarContent>
       </Sidebar>
 
-      <div className="flex-1 p-4">
+      <div className="flex-1 p-4  mr-64">
         <Tabs value={activeTab} className="w-full">
           {navItems.map((item) => (
             <TabsContent key={item.title} value={item.title}>
