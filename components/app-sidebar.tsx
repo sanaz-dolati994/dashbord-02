@@ -27,6 +27,7 @@ export function AppSidebar() {
           <SidebarGroup>
             <SidebarGroupLabel>
               <p>داشبورد</p>
+              <h1>سلام خوش آمدید</h1>
 
               <LucideLayoutDashboard />
             </SidebarGroupLabel>
